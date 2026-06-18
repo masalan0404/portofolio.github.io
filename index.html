@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portofolio Personal Sofi Maulana - Graphic Designer, Web Developer, Data Specialist, & IT Network Engineer. Menghadirkan solusi teknologi dan desain visual premium.">
+    <link rel="icon" type="image/png" href="developer_avatar.png">
+    <title>Sofi Maulana | Personal Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#090d16',
+                        glassBg: 'rgba(15, 23, 42, 0.45)',
+                        glassBorder: 'rgba(255, 255, 255, 0.07)',
+                    },
+                    boxShadow: {
+                        glowCyan: '0 0 25px -5px rgba(6, 182, 212, 0.25)',
+                        glowIndigo: '0 0 25px -5px rgba(99, 102, 241, 0.25)',
+                        glowViolet: '0 0 25px -5px rgba(139, 92, 246, 0.25)',
+                        glowEmerald: '0 0 25px -5px rgba(16, 185, 129, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS (Animations & Utilities) -->
+    <style>
+        /* Hide scrollbar for standard premium feel but allow scrolling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+
+        /* Antigravity floating keyframes */
+        @keyframes floatSlow {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes floatMedium {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes rotateSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseSlow {
+            0%, 100% { opacity: 0.25; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.15); }
+        }
+
+        /* Float Classes */
+        .float-slow {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+        .float-medium {
+            animation: floatMedium 5s ease-in-out infinite;
+        }
+        .rotate-slow {
+            animation: rotateSlow 25s linear infinite;
+        }
+        .pulse-slow {
+            animation: pulseSlow 10s ease-in-out infinite;
+        }
+
+        /* Floating background dust particles */
+        @keyframes drift {
+            0% {
+                transform: translateY(100vh) scale(0.8) translateX(0px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.35;
+            }
+            90% {
+                opacity: 0.35;
+            }
+            100% {
+                transform: translateY(-10vh) scale(0.4) translateX(25px);
+                opacity: 0;
+            }
+        }
+
+        .particle {
+            animation: drift 25s linear infinite;
+        }
+
+        /* Glassmorphism utility */
+        .glassmorphism {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-slate-100 font-sans min-h-screen overflow-x-hidden relative selection:bg-cyan-500/30 selection:text-cyan-200">
+
+    <!-- Antigravity Background Elements -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <!-- Floating Particle Dust Container -->
+        <div id="particles-container" class="absolute inset-0"></div>
+
+        <!-- Ambient Color Blob 1 (Top Left/Center) -->
+        <div id="blob-1" class="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-violet-600/10 blur-[140px] pulse-slow transition-transform duration-700 ease-out"></div>
+        
+        <!-- Ambient Color Blob 2 (Bottom Right) -->
+        <div id="blob-2" class="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-cyan-600/10 blur-[140px] pulse-slow transition-transform duration-700 ease-out" style="animation-delay: -3s;"></div>
+
+        <!-- Decorative Grid Background Overlay -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 glassmorphism border-b border-slate-900/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" class="flex items-center space-x-2">
+                <span class="font-display font-extrabold text-2xl bg-gradient-to-r from-cyan-400 via-indigo-400 to-violet-500 bg-clip-text text-transparent tracking-wider">Sofi Maulana</span>
+            </a>
+            
+            <!-- Desktop Nav Menu -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors duration-200">Beranda</a>
+                <a href="#keahlian" class="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors duration-200">Keahlian</a>
+                <a href="#tentang" class="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors duration-200">Tentang Saya</a>
+                <a href="#kontak" class="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors duration-200">Kontak</a>
+                <a href="#kontak" class="px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider text-cyan-400 border border-cyan-500/30 hover:border-cyan-400 hover:bg-cyan-500/5 transition-all duration-300 shadow-[0_0_15px_-3px_rgba(6,182,212,0.1)]">Hubungi Saya</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-btn" aria-label="Toggle Mobile Menu" class="md:hidden flex flex-col justify-between w-6 h-5 focus:outline-none z-50">
+                <span id="line1" class="w-full h-0.5 bg-slate-300 rounded transition-all duration-300 origin-left"></span>
+                <span id="line2" class="w-full h-0.5 bg-slate-300 rounded transition-all duration-300"></span>
+                <span id="line3" class="w-full h-0.5 bg-slate-300 rounded transition-all duration-300 origin-left"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu Panel -->
+        <div id="mobile-menu" class="hidden fixed inset-0 top-0 left-0 w-screen h-screen bg-darkBg/95 backdrop-blur-xl z-40 flex flex-col justify-center items-center space-y-8 text-2xl font-display font-medium">
+            <a href="#home" class="mobile-nav-link text-slate-300 hover:text-cyan-400 transition-colors">Beranda</a>
+            <a href="#keahlian" class="mobile-nav-link text-slate-300 hover:text-cyan-400 transition-colors">Keahlian</a>
+            <a href="#tentang" class="mobile-nav-link text-slate-300 hover:text-cyan-400 transition-colors">Tentang Saya</a>
+            <a href="#kontak" class="mobile-nav-link text-slate-300 hover:text-cyan-400 transition-colors">Kontak</a>
+            <a href="#kontak" class="mobile-nav-link px-6 py-2.5 rounded-full text-sm font-semibold uppercase tracking-wider text-cyan-400 border border-cyan-500/30 hover:border-cyan-400 hover:bg-cyan-500/5 transition-all">Hubungi Saya</a>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center pt-24 px-6 relative">
+            <div class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-12 lg:py-24">
+                
+                <!-- Hero Left: Text & CTA -->
+                <div class="lg:col-span-7 space-y-8 text-left order-2 lg:order-1">
+                    <div class="inline-flex items-center space-x-2 bg-slate-900/60 border border-slate-800 px-4 py-2 rounded-full float-medium shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
+                        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+                        <span class="text-xs font-semibold uppercase tracking-widest text-cyan-300">Tersedia untuk Kolaborasi</span>
+                    </div>
+                    <div class="space-y-4">
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight leading-tight">
+                            <!-- Halo, Saya <br> -->
+                            <span class="bg-gradient-to-r from-cyan-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent">Sofi Maulana</span>
+                        </h1>
+                        <h2 class="text-xl sm:text-2xl font-semibold text-indigo-200 tracking-wide font-display">
+                            Multi-Disciplinary Tech Enthusiast
+                        </h2>
+                        <p class="text-slate-400 max-w-xl text-base sm:text-lg leading-relaxed font-light">
+                            Mengintegrasikan estetika desain kreatif dengan pemrograman web modern, 
+                            pengelolaan basis data yang terstruktur, serta infrastruktur jaringan yang andal dan aman.
+                        </p>
+                    </div>
+
+                    <!-- Hero CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+                        <a href="#keahlian" class="px-8 py-4 rounded-xl font-semibold text-center text-darkBg bg-gradient-to-r from-cyan-400 via-indigo-400 to-violet-500 hover:from-cyan-300 hover:via-indigo-300 hover:to-violet-400 transition-all duration-300 shadow-[0_10px_20px_-10px_rgba(6,182,212,0.5)] transform hover:-translate-y-1">
+                            Lihat Keahlian
+                        </a>
+                        <a href="#kontak" class="px-8 py-4 rounded-xl font-semibold text-center text-slate-300 border border-slate-700/80 bg-slate-900/40 hover:bg-slate-800/60 hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                            Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Float Profile Avatar -->
+                <div class="lg:col-span-5 flex justify-center items-center order-1 lg:order-2">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 float-slow">
+                        <!-- Orbiting Ring Background -->
+                        <div class="absolute inset-0 rounded-full border-2 border-dashed border-indigo-500/20 rotate-slow"></div>
+                        
+                        <!-- Glowing Backlighting shadow -->
+                        <div class="absolute -inset-2 bg-gradient-to-tr from-cyan-500 to-violet-500 rounded-[2.5rem] opacity-20 blur-2xl"></div>
+
+                        <!-- Card Shell with Avatar Image -->
+                        <div class="absolute inset-2 bg-slate-950 border border-slate-800 rounded-[2.5rem] overflow-hidden flex items-center justify-center p-3 shadow-2xl backdrop-blur-md">
+                            <img src="developer_avatar.png" alt="Sofi Maulana profile avatar graphic" class="w-full h-full object-cover rounded-[2rem] opacity-90 transition-transform duration-500 hover:scale-105">
+                        </div>
+
+                        <!-- Mini Floating Badge (IT Node & Graphics) -->
+                        <div class="absolute -bottom-2 -left-2 bg-slate-900/90 border border-slate-700/60 p-4 rounded-2xl flex items-center space-x-3 float-medium shadow-xl backdrop-blur-md" style="animation-delay: -1.5s;">
+                            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Spesialisasi</p>
+                                <p class="text-xs font-semibold text-white">Fullstack Dev & IT</p>
+                            </div>
+                        </div>
+
+                        <!-- Mini Floating Badge 2 (Design) -->
+                        <div class="absolute -top-2 -right-2 bg-slate-900/90 border border-slate-700/60 p-4 rounded-2xl flex items-center space-x-3 float-medium shadow-xl backdrop-blur-md" style="animation-delay: -3.5s;">
+                            <div class="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Estetika</p>
+                                <p class="text-xs font-semibold text-white">UI/UX & Graphics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="keahlian" class="py-24 px-6 relative">
+            <div class="max-w-7xl mx-auto space-y-16">
+                
+                <!-- Section Header -->
+                <div class="text-center space-y-4 max-w-2xl mx-auto">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-cyan-400">Kemampuan & Bidang</span>
+                    <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight">
+                        Keahlian Profesional
+                    </h2>
+                    <p class="text-slate-400 font-light leading-relaxed">
+                        Kombinasi keterampilan teknis dan visual yang dirancang untuk mendukung transformasi digital yang menyeluruh dan berdampak.
+                    </p>
+                </div>
+
+                <!-- Skills Dynamic Grid -->
+                <!-- Responsive grid details: col-1 (mobile), col-2 (tablet), col-4 (desktop) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                    <!-- Skill 1: Graphic Design -->
+                    <div class="floating-wrapper float-slow">
+                        <div class="tilt-card glassmorphism rounded-2xl p-7 transition-all duration-300 hover:shadow-glowCyan hover:border-cyan-500/30 group relative overflow-hidden h-full flex flex-col justify-between">
+                            <div class="card-glow pointer-events-none absolute w-48 h-48 rounded-full bg-cyan-500/10 blur-2xl -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300"></div>
+                            <div class="space-y-6 relative z-10">
+                                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500 group-hover:text-darkBg transition-all duration-300">
+                                    <!-- Creative Icon -->
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                                </div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-display font-semibold text-white group-hover:text-cyan-300 transition-colors">Graphic Design</h3>
+                                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                                        Desain kreatif & visual asset. Menghadirkan estetika visual yang kuat, representatif, dan profesional.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="pt-6 relative z-10 border-t border-slate-800/60 mt-6">
+                                <ul class="text-xs text-slate-400 space-y-2 font-light">
+                                    <li class="flex items-center space-x-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                                        <span>Brand Identity & Logos</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                                        <span>Marketing & Social Assets</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                                        <span>UI/UX Interface Design</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 2: Web Development -->
+                    <div class="floating-wrapper float-slow" style="animation-delay: -1.5s;">
+                        <div class="tilt-card glassmorphism rounded-2xl p-7 transition-all duration-300 hover:shadow-glowIndigo hover:border-indigo-500/30 group relative overflow-hidden h-full flex flex-col justify-between">
+                            <div class="card-glow pointer-events-none absolute w-48 h-48 rounded-full bg-indigo-500/10 blur-2xl -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300"></div>
+                            <div class="space-y-6 relative z-10">
+                                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-darkBg transition-all duration-300">
+                                    <!-- Coding Icon -->
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                                </div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-display font-semibold text-white group-hover:text-indigo-300 transition-colors">Web Development</h3>
+                                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                                        Pembuatan web kustom & modern yang sepenuhnya responsif, cepat, interaktif, dan optimal di mesin pencari.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="pt-6 relative z-10 border-t border-slate-800/60 mt-6">
+                                <ul class="text-xs text-slate-400 space-y-2 font-light">
+                                    <li class="flex items-center space-x-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                                        <span>HTML5, CSS3, & Modern JS</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                                        <span>Tailwind CSS & Frameworks</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                                        <span>Optimasi Responsif & SEO</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 3: Data Organization -->
+                    <div class="floating-wrapper float-slow" style="animation-delay: -3s;">
+                        <div class="tilt-card glassmorphism rounded-2xl p-7 transition-all duration-300 hover:shadow-glowViolet hover:border-violet-500/30 group relative overflow-hidden h-full flex flex-col justify-between">
+                            <div class="card-glow pointer-events-none absolute w-48 h-48 rounded-full bg-violet-500/10 blur-2xl -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300"></div>
+                            <div class="space-y-6 relative z-10">
+                                <div class="w-12 h-12 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 group-hover:bg-violet-500 group-hover:text-darkBg transition-all duration-300">
+                                    <!-- Database Icon -->
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                </div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-display font-semibold text-white group-hover:text-violet-300 transition-colors">Data Organization</h3>
+                                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                                        Pengolahan & penataan data. Menata data mentah menjadi laporan informatif. Microsoft Office Expert.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="pt-6 relative z-10 border-t border-slate-800/60 mt-6">
+                                <ul class="text-xs text-slate-400 space-y-2 font-light">
+                                    <li class="flex items-center space-x-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                                        <span>Advanced MS Office Suite</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                                        <span>Data Entry & Strukturisasi</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                                        <span>Visualisasi & Dashboard</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 4: IT Networking -->
+                    <div class="floating-wrapper float-slow" style="animation-delay: -4.5s;">
+                        <div class="tilt-card glassmorphism rounded-2xl p-7 transition-all duration-300 hover:shadow-glowEmerald hover:border-emerald-500/30 group relative overflow-hidden h-full flex flex-col justify-between">
+                            <div class="card-glow pointer-events-none absolute w-48 h-48 rounded-full bg-emerald-500/10 blur-2xl -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300"></div>
+                            <div class="space-y-6 relative z-10">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-darkBg transition-all duration-300">
+                                    <!-- Network Icon -->
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                </div>
+                                <div class="space-y-2">
+                                    <h3 class="text-xl font-display font-semibold text-white group-hover:text-emerald-300 transition-colors">IT & Network</h3>
+                                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                                        Infrastruktur jaringan & pengelolaan sistem. Memastikan manajemen server, router, dan workstation berjalan lancar.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="pt-6 relative z-10 border-t border-slate-800/60 mt-6">
+                                <ul class="text-xs text-slate-400 space-y-2 font-light">
+                                    <li class="flex items-center space-x-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                        <span>Network Design & Setup</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                        <span>System Management & OS</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                        <span>Security & Troubleshooting</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="tentang" class="py-24 px-6 relative bg-slate-950/40">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Left Details/Text -->
+                <div class="lg:col-span-6 space-y-8">
+                    <div class="space-y-4">
+                        <span class="text-xs font-semibold uppercase tracking-widest text-indigo-400">Mengenal Saya</span>
+                        <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight">
+                            Kolaborasi Ide Kreatif, Teknologi Modern & Kekuatan AI
+                        </h2>
+                        <p class="text-slate-400 font-light leading-relaxed">
+                            Saya adalah seorang profesional multi-disiplin yang berfokus pada integrasi desain kreatif, pengembangan web, administrasi data, dan manajemen infrastruktur IT. Di era modern ini, saya aktif mengolaborasikan keahlian teknis saya dengan pemanfaatan teknologi Kecerdasan Buatan (AI) untuk mempercepat alur kerja kreatif, melakukan analisis data cerdas, serta membangun solusi web yang adaptif dan inovatif sesuai perkembangan zaman.
+                        </p>
+                        <p class="text-slate-400 font-light leading-relaxed">
+                            Bagi saya, integrasi AI bukan untuk menggantikan peran manusia, melainkan sebagai partner akselerasi untuk menghadirkan kualitas terbaik, efisiensi maksimal, dan solusi digital yang relevan dan futuristik dalam setiap proyek kolaborasi.
+                        </p>
+                    </div>
+
+                    <!-- Tech stack list -->
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Metodologi & Tools</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-medium px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800/80 text-slate-300">Adobe Creative Suite</span>
+                            <span class="text-xs font-medium px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800/80 text-slate-300">Figma UI/UX</span>
+                            <span class="text-xs font-medium px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800/80 text-slate-300">HTML5 / CSS3 / JS</span>
+                            <span class="text-xs font-medium px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800/80 text-slate-300">Tailwind CSS</span>
+                            <span class="text-xs font-medium px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800/80 text-slate-300">Microsoft Excel Advanced</span>
+                            <span class="text-xs font-medium px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800/80 text-slate-300">MikroTik & Networking</span>
+                            <span class="text-xs font-medium px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800/80 text-slate-300">Database (SQL)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Stats Grid -->
+                <div class="lg:col-span-6 grid grid-cols-2 gap-6">
+                    <div class="glassmorphism p-8 rounded-2xl text-center space-y-2 float-medium hover:border-slate-700/55 transition-all">
+                        <p class="text-4xl sm:text-5xl font-display font-extrabold text-cyan-400">100%</p>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-400">Komitmen Kualitas</p>
+                    </div>
+                    <div class="glassmorphism p-8 rounded-2xl text-center space-y-2 float-medium hover:border-slate-700/55 transition-all" style="animation-delay: -2s;">
+                        <p class="text-4xl sm:text-5xl font-display font-extrabold text-indigo-400">4+</p>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-400">Pilar Keahlian</p>
+                    </div>
+                    <div class="glassmorphism p-8 rounded-2xl text-center space-y-2 float-medium hover:border-slate-700/55 transition-all" style="animation-delay: -4s;">
+                        <p class="text-4xl sm:text-5xl font-display font-extrabold text-violet-400">Modern</p>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-400">Desain & Standar</p>
+                    </div>
+                    <div class="glassmorphism p-8 rounded-2xl text-center space-y-2 float-medium hover:border-slate-700/55 transition-all" style="animation-delay: -1.5s;">
+                        <p class="text-4xl sm:text-5xl font-display font-extrabold text-emerald-400">Solutif</p>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-slate-400">Orientasi Hasil</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="kontak" class="py-24 px-6 relative">
+            <div class="max-w-7xl mx-auto space-y-16">
+                
+                <!-- Section Header -->
+                <div class="text-center space-y-4 max-w-2xl mx-auto">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-violet-400">Hubungi</span>
+                    <h2 class="text-3xl sm:text-4xl font-display font-extrabold tracking-tight">
+                        Hubungkan Proyek Anda
+                    </h2>
+                    <p class="text-slate-400 font-light leading-relaxed">
+                        Tertarik bekerja sama atau berdiskusi mengenai proyek Anda berikutnya? Silakan kirimkan pesan di bawah ini.
+                    </p>
+                </div>
+
+                <!-- Contact Content split -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    
+                    <!-- Contact info left -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="glassmorphism p-6 rounded-2xl flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Email</h4>
+                                <a href="mailto:maulanasofi99@gmail.com" class="text-sm text-slate-400 hover:text-cyan-400 transition-colors font-light font-mono">maulanasofi99@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="glassmorphism p-6 rounded-2xl flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white">Lokasi</h4>
+                                <p class="text-sm text-slate-400 font-light">Surabaya, Indonesia</p>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp Link -->
+                        <a href="https://wa.me/6281515452691" target="_blank" class="glassmorphism p-6 rounded-2xl flex items-start space-x-4 hover:border-emerald-500/30 hover:shadow-[0_0_15px_-3px_rgba(16,185,129,0.15)] transition-all duration-300 group block">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-darkBg transition-all duration-300 shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors">WhatsApp</h4>
+                                <p class="text-sm text-slate-400 font-light font-mono">+62 8151 5452 691</p>
+                            </div>
+                        </a>
+
+                        <!-- Instagram Link -->
+                        <a href="https://instagram.com/sofi_maulana" target="_blank" class="glassmorphism p-6 rounded-2xl flex items-start space-x-4 hover:border-pink-500/30 hover:shadow-[0_0_15px_-3px_rgba(244,63,94,0.15)] transition-all duration-300 group block">
+                            <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-400 group-hover:bg-pink-500 group-hover:text-darkBg transition-all duration-300 shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white group-hover:text-pink-300 transition-colors">Instagram</h4>
+                                <p class="text-sm text-slate-400 font-light font-mono">@sofimlna</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Contact Form right -->
+                    <div class="lg:col-span-7 glassmorphism p-8 rounded-3xl border border-slate-800/80">
+                        <form id="contact-form" class="space-y-6" onsubmit="event.preventDefault(); alert('Terima kasih atas pesan Anda! (Ini adalah demo formulir)');">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label for="name" class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Nama Lengkap</label>
+                                    <input type="text" id="name" required class="w-full bg-slate-950/80 border border-slate-800/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500/50 transition-colors" placeholder="Masukkan nama Anda">
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="email" class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Alamat Email</label>
+                                    <input type="email" id="email" required class="w-full bg-slate-950/80 border border-slate-800/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500/50 transition-colors" placeholder="nama@email.com">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label for="subject" class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Subjek</label>
+                                <input type="text" id="subject" required class="w-full bg-slate-950/80 border border-slate-800/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500/50 transition-colors" placeholder="Judul pesan Anda">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="message" class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Pesan</label>
+                                <textarea id="message" rows="5" required class="w-full bg-slate-950/80 border border-slate-800/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-500/50 transition-colors resize-none" placeholder="Tuliskan detail pesan Anda di sini..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl text-darkBg font-semibold bg-gradient-to-r from-cyan-400 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 transition-all duration-300 shadow-[0_4px_20px_-5px_rgba(6,182,212,0.3)]">
+                                Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950/80 py-12 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-2">
+                <span class="font-display font-extrabold text-xl bg-gradient-to-r from-cyan-400 via-indigo-400 to-violet-500 bg-clip-text text-transparent">SM.</span>
+                <span class="text-xs text-slate-500">| Portfolio Personal</span>
+            </div>
+            <p class="text-xs text-slate-500 text-center md:text-right font-light">
+                &copy; 2026 Sofi Maulana. All rights reserved. Desain antigravitasi premium.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // --- 1. Background Dust Particles System ---
+        const particlesContainer = document.getElementById('particles-container');
+        const particleCount = 25; // Number of floating particles
+
+        if (particlesContainer) {
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'absolute bg-white/20 rounded-full pointer-events-none particle';
+                
+                // Randomize sizes, start positions, speeds, and delays
+                const size = Math.random() * 3.5 + 1.5; // 1.5px to 5px
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Drift animation properties
+                const duration = Math.random() * 15 + 15; // 15s to 30s
+                const delay = Math.random() * -30; // Negative delay to start mid-animation
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // --- 2. Parallax Effects (Glowing Ambient Blobs) ---
+        const blob1 = document.getElementById('blob-1');
+        const blob2 = document.getElementById('blob-2');
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            // Subtle shift of background blobs based on cursor movement
+            const moveX = (x - window.innerWidth / 2) * 0.04;
+            const moveY = (y - window.innerHeight / 2) * 0.04;
+            
+            if (blob1) blob1.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            if (blob2) blob2.style.transform = `translate(${-moveX}px, ${-moveY}px)`;
+        });
+
+        // --- 3. Card Hover Tilt & Pointer Glow Effect ---
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; // x cursor coordinate inside card
+                const y = e.clientY - rect.top;  // y cursor coordinate inside card
+                
+                const width = rect.width;
+                const height = rect.height;
+                
+                // Calculate tilt rotation based on cursor proximity to card center
+                const rotateX = ((y / height) - 0.5) * -12; // Maximum tilt angle -12 to 12
+                const rotateY = ((x / width) - 0.5) * 12;  // Maximum tilt angle -12 to 12
+                
+                // Apply 3D transform tilt
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                
+                // Track & reveal the flashlight pointer glow
+                const glow = card.querySelector('.card-glow');
+                if (glow) {
+                    glow.style.left = `${x}px`;
+                    glow.style.top = `${y}px`;
+                    glow.style.opacity = '1';
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // Reset tilt to standard values
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                
+                // Hide card glow
+                const glow = card.querySelector('.card-glow');
+                if (glow) {
+                    glow.style.opacity = '0';
+                }
+            });
+        });
+
+        // --- 4. Mobile Menu Toggle Logic ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const line3 = document.getElementById('line3');
+
+        function toggleMobileMenu() {
+            const isOpened = !mobileMenu.classList.contains('hidden');
+            
+            if (isOpened) {
+                // Close Menu
+                mobileMenu.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden'); // Restore body scrolling
+                
+                // Rotate lines back
+                line1.classList.remove('rotate-45', 'translate-y-2');
+                line2.classList.remove('opacity-0');
+                line3.classList.remove('-rotate-45', '-translate-y-2');
+            } else {
+                // Open Menu
+                mobileMenu.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden'); // Lock body scrolling
+                
+                // Morph burger icon to X
+                line1.classList.add('rotate-45', 'translate-y-2');
+                line2.classList.add('opacity-0');
+                line3.classList.add('-rotate-45', '-translate-y-2');
+            }
+        }
+
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Close mobile menu on clicking any navigation link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // --- 5. Scroll Header Shadow Trigger ---
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-xl', 'bg-darkBg/85');
+            } else {
+                header.classList.remove('shadow-xl', 'bg-darkBg/85');
+            }
+        });
+    </script>
+</body>
+</html>
